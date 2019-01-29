@@ -1,0 +1,30 @@
+<h2>Edit celebritiy</h2>
+
+<p>
+  <a href="/celebrities">Celebrities</a>
+</p>
+
+<hr />
+
+{{#with celebrity}}
+<form action="/celebrities/{{ _id }}" method="post">
+  <p>
+    <label for="">Name:</label><br />
+    <input type="text" name="name" value="{{ name }}">
+  </p>
+
+  <p>
+    <label for="">Occupation:</label><br />
+    <input type="text" name="occupation" value="{{ occupation }}">
+  </p>
+
+  <p>
+    <label for="">Catch phrase:</label><br />
+    <input type="text" name="catchPhrase" value="{{ catchPhrase }}">
+  </p>
+
+  <p>
+    <button type="submit">EDIT</button>
+  </p>
+</form>
+{{/with}}

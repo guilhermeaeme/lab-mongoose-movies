@@ -48,4 +48,23 @@ router.post('/celebrities/:id/delete', (req, res, next) => {
     .catch(err => console.log(err))
 });
 
+router.get('/celebrities/:id/edit', (req, res, next) => {
+  Celebrity.findById(req.params.id)
+    .then(celebrity => {
+      res.render('celebrities/edit', { celebrity });
+    })
+    .catch(err => console.log(err))
+});
+
+router.post('/celebrities/:id', (req, res, next) => {
+  const { name, occupation, catchPhrase } = req.body;
+  Celebrity.update({_id: req.params.id}, { $set: {name, occupation, catchPhrase }})
+  .then((book) => {
+    res.redirect('/celebrities');
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+});
+
 module.exports = router;
