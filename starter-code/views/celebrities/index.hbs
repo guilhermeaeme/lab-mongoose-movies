@@ -10,10 +10,12 @@
 
 {{#each celebrities}}
 
-  <p>
-    <a href="/celebrities/{{ this._id }}">
-      {{ this.name }}
-    </a>
-  </p>
+  <div class="celebrity">
+    <a href="/celebrities/{{ this._id }}">{{ this.name }}</a>
+
+    <form class="inline" action="/celebrities/{{ this._id }}/delete" method="POST">
+      <button type="submit">delete</button>
+    </form>
+  </div>
 
 {{/each}}

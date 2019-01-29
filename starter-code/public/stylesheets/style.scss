@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+
+.celebrity {
+  display: block;
+  padding: 5px 0;
+}
+
+.inline {
+  display: inline-block;
+}
+
+form.inline {
+  margin-left: 5px;
+}
