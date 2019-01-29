@@ -16,12 +16,28 @@ router.get('/celebrities', (req, res, next) => {
     .catch(err => console.log(err))
 });
 
+router.get('/celebrities/new', (req, res, next) => {
+  res.render('celebrities/new');
+});
+
 router.get('/celebrities/:id', (req, res, next) => {
   Celebrity.findById(req.params.id)
     .then(celebrity => {
       res.render('celebrities/show', { celebrity });
     })
     .catch(err => console.log(err))
+});
+
+router.post('/celebrities', (req, res, next) => {
+  const { name, occupation, catchPhrase } = req.body;
+  const newCelebrity = new Celebrity({ name, occupation, catchPhrase})
+  newCelebrity.save()
+  .then((celebrity) => {
+    res.redirect('/celebrities')
+  })
+  .catch((error) => {
+    res.redirect('/celebrities/new')
+  })
 });
 
 module.exports = router;
